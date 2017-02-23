@@ -5,5 +5,5 @@ export const SHOW_DOCUMENT_LIST = 'SHOW_DOCUMENT_LIST'
 
 // action creators
 export function showDocumentListAction(name){
-  return { type: SHOW_DOCUMENT_LIST, name }
+  return { type: SHOW_DOCUMENT_LIST, name: name }
 }

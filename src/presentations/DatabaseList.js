@@ -6,6 +6,7 @@ const DatabaseList = ({ databases, onDatabaseClick }) => (
     {databases.map(db =>
       <Database
         key={db.name}
+        {...db}
         onClick={() => onDatabaseClick(db)}
       />
     )}

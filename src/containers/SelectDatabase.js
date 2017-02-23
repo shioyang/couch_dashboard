@@ -21,4 +21,4 @@ const SelectDatabase = connect(
   mapDispatchToProps
 )(DatabaseList)
 
-export default DatabaseList
+export default SelectDatabase
