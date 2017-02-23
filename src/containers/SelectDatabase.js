@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { showDocumentListAction } from '../reducers/actions'
+import { showDocumentListAction } from '../actions'
 import DatabaseList from '../presentations/DatabaseList'
 
 const mapStateToProps = (state) => {

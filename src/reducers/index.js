@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { SHOW_DOCUMENT_LIST, showDocumentListAction } from './actions'
+import { SHOW_DOCUMENT_LIST, showDocumentListAction } from '../actions'
 
 function databases(state = [], action){
   switch(action.type){
