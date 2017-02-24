@@ -4,12 +4,12 @@ import { Router, Route, browserHistory } from 'react-router'
 // Redux
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import dashboardApp from '../reducers'
+import rootReducer from '../reducers/rootReducer'
 
 import App from '../presentations/App'
 import './Root.css'
 
-let store = createStore(dashboardApp)
+let store = createStore(rootReducer)
 
 export default class Root extends Component {
   render() {

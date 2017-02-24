@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import databases from './databases'
 
-const dashboardApp = combineReducers({
+const rootReducer = combineReducers({
   databases
 })
 
-export default dashboardApp
+export default rootReducer
