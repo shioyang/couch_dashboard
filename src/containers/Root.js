@@ -3,13 +3,12 @@ import { Router, Route, browserHistory } from 'react-router'
 
 // Redux
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from '../reducers/rootReducer'
+import configureStore from '../configureStore'
 
 import App from '../presentations/App'
 import './Root.css'
 
-let store = createStore(rootReducer)
+let store = configureStore();
 
 export default class Root extends Component {
   render() {
