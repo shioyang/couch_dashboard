@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { showDocumentListAction } from '../actions'
+import { fetchDocs } from '../actions/docs'
 import DatabaseList from '../presentations/DatabaseList'
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onDatabaseClick: (name) => {
-      dispatch(showDocumentListAction(name))
+      dispatch(fetchDocs(name))
     }
   }
 }
