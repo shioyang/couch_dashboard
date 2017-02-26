@@ -14,12 +14,12 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
     </ul>
     <div>
       {docs && docs.map(d => 
-        <table>
+        <table key={d.id}>
           <thead>
-            <tr><th>ID</th><th>key</th></tr>
+            <tr><th>key</th><th>value</th></tr>
           </thead>
           <tbody>
-            <tr><td>{d.id}</td><td>{d.key}</td></tr>
+            <tr><td>id</td><td>{d['id']}</td></tr>
           </tbody>
         </table>
       )}
