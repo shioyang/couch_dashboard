@@ -6,7 +6,7 @@ const initial_docs = {
 }
 
 const Docs = function docs(state = initial_docs, action){
-  switch(action){
+  switch(action.type){
     case REQUEST_DOCS:
       return Object.assign({}, state, {
         isFetching: true
