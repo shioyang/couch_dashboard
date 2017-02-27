@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
 import Database from './Database'
+import './DatabaseList.css'
 
 const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
-  <div>
-    <ul>
+  <div className='databaseList'>
+    <div className='dbNameListArea'>
       {databases.map(db =>
         <Database
           key={db.name}
@@ -11,8 +12,8 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
           onClick={() => onDatabaseClick(db)}
         />
       )}
-    </ul>
-    <div>
+    </div>
+    <div className='docInfoListArea'>
       {docs && docs.length !== 0 && docs.map(d => 
         <table key={d.id}>
           <thead>

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
+import FlatButton from 'material-ui/FlatButton'
 
 const Database = ({ onClick, name }) => (
-  <li onClick={onClick} >{name}</li>
+  <FlatButton onClick={onClick} >{name}</FlatButton>
 )
 
 Database.propTypes = {
