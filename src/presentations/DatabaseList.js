@@ -33,7 +33,8 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail 
       }
     </div>
     <div className='docDetailArea'>
-      {docDetail && Object.keys(docDetail).length !== 0 &&
+      {docs && docs.length !== 0 &&
+       docDetail && Object.keys(docDetail).length !== 0 &&
         <table>
           <tbody>
             {Object.keys(docDetail).map(k => 
