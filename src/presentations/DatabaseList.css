@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto;
   border: 2px solid gray;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: white;
 }
 .databaseList .docInfoListArea .noResults {
