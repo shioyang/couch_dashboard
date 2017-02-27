@@ -1,6 +1,7 @@
 .databaseList .dbNameListArea {
   padding: 5px;
 }
+
 .databaseList .docInfoListArea {
   padding: 5px;
   margin: 10px 0;
@@ -8,10 +9,23 @@
 .databaseList .docInfoListArea table {
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid gray;
+  border: 2px solid gray;
   padding: 20px;
 }
 .databaseList .docInfoListArea .noResults {
   font-style: italic;
-  color: gray;
+  color: lightgray;
 }
+
+.databaseList .docDetailArea table {
+  margin-left: auto;
+  margin-right: auto;
+  border: 4px solid gray;
+  padding: 20px;
+}
+.databaseList .docDetailArea table .labelField {
+  text-align: right;
+}
+.databaseList .docDetailArea table label {
+  margin: 0 15px 0 0;
+} 
