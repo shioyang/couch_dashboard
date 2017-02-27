@@ -31,3 +31,6 @@
 .databaseList .docDetailArea table label {
   margin: 0 15px 0 0;
 } 
+.databaseList .docDetailArea .actionButtons {
+  padding: 10px 0 0;
+}
