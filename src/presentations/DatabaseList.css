@@ -11,3 +11,7 @@
   border: 1px solid gray;
   padding: 20px;
 }
+.databaseList .docInfoListArea .noResults {
+  font-style: italic;
+  color: gray;
+}

@@ -25,7 +25,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
         </table>
       )}
       {docs && docs.length === 0 &&
-        <span>No Results</span>
+        <span className='noResults'>No Results</span>
       }
     </div>
   </div>
