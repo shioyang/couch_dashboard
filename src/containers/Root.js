@@ -5,8 +5,13 @@ import { Router, Route, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import configureStore from '../configureStore'
 
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
 import App from '../presentations/App'
 import './Root.css'
+
+// material-ui: Needed for tap events
+injectTapEventPlugin();
 
 let store = configureStore();
 
