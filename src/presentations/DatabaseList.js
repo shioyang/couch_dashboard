@@ -43,12 +43,11 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail 
             <tbody>
               {Object.keys(docDetail).map(k => 
                 <tr key={k}>
-                  <td className='labelField'><label>{k}:</label></td>
-                  <td className='valueField'><TextField id={k} defaultValue={docDetail[k]} /></td>
+                  <td className='valueField'><TextField id={k} floatingLabelText={k} defaultValue={docDetail[k]} /></td>
                 </tr>
               )}
               <tr>
-                <td colSpan={2}><FloatingActionButton mini={true}><ContentAdd /></FloatingActionButton></td>
+                <td><FloatingActionButton mini={true}><ContentAdd /></FloatingActionButton></td>
               </tr>
             </tbody>
           </table>
