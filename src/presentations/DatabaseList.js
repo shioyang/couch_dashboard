@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
 import Database from './Database'
+import FlatButton from 'material-ui/FlatButton'
 import './DatabaseList.css'
 
-const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
+const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
       {databases.map(db =>
@@ -17,10 +18,16 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
       {docs && docs.length !== 0 && docs.map(d => 
         <table key={d.id}>
           <thead>
-            <tr><th>key</th><th>value</th></tr>
+            <tr><th>key</th><th>value</th><th></th></tr>
           </thead>
           <tbody>
-            <tr><td>id</td><td>{d['id']}</td></tr>
+            <tr>
+              <td>id</td>
+              <td>{d['id']}</td>
+              <td><FlatButton onClick={
+                  () => onDocClick({name: 'host'}, {id: d['id']})
+                }>Edit</FlatButton></td>
+            </tr>
           </tbody>
         </table>
       )}
@@ -39,7 +46,8 @@ DatabaseList.propTypes = {
   docs: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     key: PropTypes.string.isRequired
-  }))
+  })),
+  onDocClick: PropTypes.func
 }
 
 export default DatabaseList
