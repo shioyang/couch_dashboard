@@ -13,7 +13,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
       )}
     </ul>
     <div>
-      {docs && docs.map(d => 
+      {docs && docs.length !== 0 && docs.map(d => 
         <table key={d.id}>
           <thead>
             <tr><th>key</th><th>value</th></tr>
@@ -23,6 +23,9 @@ const DatabaseList = ({ databases, onDatabaseClick, docs }) => (
           </tbody>
         </table>
       )}
+      {docs && docs.length === 0 &&
+        <span>No Results</span>
+      }
     </div>
   </div>
 )
