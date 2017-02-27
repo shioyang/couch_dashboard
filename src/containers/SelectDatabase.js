@@ -6,7 +6,8 @@ import DatabaseList from '../presentations/DatabaseList'
 const mapStateToProps = (state) => {
   return {
     databases: state.databases,
-    docs: state.docs.items
+    docs: state.docs.items,
+    docDetail: state.docDetail.item
   }
 }
 

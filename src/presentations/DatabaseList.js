@@ -3,7 +3,7 @@ import Database from './Database'
 import FlatButton from 'material-ui/FlatButton'
 import './DatabaseList.css'
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick }) => (
+const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
       {databases.map(db =>
@@ -35,6 +35,13 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick }) => (
         <span className='noResults'>No Results</span>
       }
     </div>
+    <div className='docDetailArea'>
+      {docDetail && Object.keys(docDetail).map(k => 
+        <div key={k}>
+          <span>{k}: </span><span>{docDetail[k]}</span>
+        </div>
+      )}
+    </div>
   </div>
 )
 
@@ -47,7 +54,8 @@ DatabaseList.propTypes = {
     id: PropTypes.string.isRequired,
     key: PropTypes.string.isRequired
   })),
-  onDocClick: PropTypes.func
+  onDocClick: PropTypes.func,
+  docs: PropTypes.arrayOf(PropTypes.shape({ }))
 }
 
 export default DatabaseList
