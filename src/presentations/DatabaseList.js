@@ -5,9 +5,20 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import { Field, reduxForm } from 'redux-form'
 import './DatabaseList.css'
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail }) => (
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+  <TextField
+    hintText={label}
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  />
+)
+
+const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
       {databases.map(db =>
@@ -38,12 +49,13 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail 
     <div className='docDetailArea'>
       {docs && docs.length !== 0 &&
        docDetail && Object.keys(docDetail).length !== 0 &&
-        <div>
+        <form onSubmit={onDocDetailSubmit}>
           <table>
             <tbody>
               {Object.keys(docDetail).map(k => 
                 <tr key={k}>
-                  <td className='valueField'><TextField id={k} floatingLabelText={k} defaultValue={docDetail[k]} /></td>
+                  <td className='valueField'><Field name={k} component={renderTextField} label={k} /></td>
+                  {/*<td className='valueField'><TextField id={k} floatingLabelText={k} defaultValue={docDetail[k]} /></td>*/}
                 </tr>
               )}
               <tr>
@@ -55,7 +67,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail 
             <RaisedButton primary={true} style={{margin: '0 5px'}}>Save</RaisedButton>
             <RaisedButton style={{margin: '0 5px'}}>Clear</RaisedButton>
           </div>
-        </div>
+        </form>
       }
     </div>
   </div>
@@ -71,7 +83,10 @@ DatabaseList.propTypes = {
     key: PropTypes.string.isRequired
   })),
   onDocClick: PropTypes.func,
-  docDetail: PropTypes.shape({ })
+  docDetail: PropTypes.shape({ }),
+  onDocDetailSubmit: PropTypes.func
 }
 
-export default DatabaseList
+export default reduxForm({
+  form: 'databaseListForm'
+})(DatabaseList)
