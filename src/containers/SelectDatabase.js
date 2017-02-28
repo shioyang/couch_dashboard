@@ -19,6 +19,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDocClick: (db, doc) => {
       dispatch(fetchDocDetail(db, doc))
+    },
+    onDocDetailSubmit: (values) => {
+      console.log(values)
+      // dispatch(saveDocDetail(values))
     }
   }
 }
