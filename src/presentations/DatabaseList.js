@@ -18,7 +18,8 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
   />
 )
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit, handleSubmit, reset }) => (
+const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit,
+                        handleSubmit, reset, pristine, submitting }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
       {databases.map(db =>
@@ -64,8 +65,8 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
             </tbody>
           </table>
           <div className='actionButtons'>
-            <RaisedButton type='submit' primary={true} style={{margin: '0 5px'}}>Save</RaisedButton>
-            <RaisedButton style={{margin: '0 5px'}} onClick={reset} >Reset</RaisedButton>
+            <RaisedButton type='submit' primary={true} style={{margin: '0 5px'}} disabled={pristine || submitting}>Save</RaisedButton>
+            <RaisedButton style={{margin: '0 5px'}} onClick={reset} disabled={pristine || submitting}>Reset</RaisedButton>
           </div>
         </form>
       }
