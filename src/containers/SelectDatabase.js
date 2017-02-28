@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     databases: state.databases,
     docs: state.docs.items,
-    docDetail: state.docDetail.item
+    docDetail: state.docDetail.item,
+    initialValues: state.docDetail.item // initialize form fields
   }
 }
 
