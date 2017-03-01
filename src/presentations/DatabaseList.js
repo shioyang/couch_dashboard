@@ -50,7 +50,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
     <div className='docDetailArea'>
       {docs && docs.length !== 0 &&
        docDetail && Object.keys(docDetail).length !== 0 &&
-        <form onSubmit={handleSubmit(onDocDetailSubmit)}>
+        <form onSubmit={handleSubmit((values) => onDocDetailSubmit({name: 'host'}, docDetail, values))}>
           <table>
             <tbody>
               {Object.keys(docDetail).map(k => 

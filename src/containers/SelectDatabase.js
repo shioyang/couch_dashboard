@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchDocs } from '../actions/docs'
-import { fetchDocDetail } from '../actions/docDetail'
+import { fetchDocDetail, saveDocDetail } from '../actions/docDetail'
 import DatabaseList from '../presentations/DatabaseList'
 
 const mapStateToProps = (state) => {
@@ -20,9 +20,11 @@ const mapDispatchToProps = (dispatch) => {
     onDocClick: (db, doc) => {
       dispatch(fetchDocDetail(db, doc))
     },
-    onDocDetailSubmit: (values) => {
+    onDocDetailSubmit: (db, docDetail, values) => {
+      console.log(db)
+      console.log(docDetail)
       console.log(values)
-      // dispatch(saveDocDetail(values))
+      dispatch(saveDocDetail(db, docDetail, values))
     }
   }
 }
