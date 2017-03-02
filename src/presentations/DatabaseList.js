@@ -32,18 +32,13 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
       )}
     </div>
     <div className='docInfoListArea'>
-      {docs && docs.length !== 0 && docs.map(d => 
-        <table key={d.id}>
-          <tbody>
-            <tr>
-              <td>{d['id']}</td>
-              <td><FlatButton onTouchTap={
-                  () => onDocClick({name: 'host'}, {_id: d['id']})
-                }>Edit</FlatButton></td>
-            </tr>
-          </tbody>
-        </table>
-      )}
+      {docs && docs.length !== 0 &&
+        <div>
+          {docs.map(d => 
+            <FlatButton key={d.id} label={d['id']} onTouchTap={() => onDocClick({name: 'host'}, {_id: d['id']}) } />
+          )}
+        </div>
+      }
       {docs && docs.length === 0 &&
         <span className='noResults'>No Results</span>
       }
