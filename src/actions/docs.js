@@ -10,34 +10,34 @@ export const FETCH_DOCS = 'FETCH_DOCS'
 const url = config.server_url
 
 // action creators
-export function requestDocs(dbname){
+export function requestDocs(db){
   return {
     type: REQUEST_DOCS,
-    dbname
+    db
   }
 }
 
-export function receiveDocs(dbname, json){
+export function receiveDocs(db, json){
   return {
     type: RECEIVE_DOCS,
-    dbname,
+    db,
     docs: json.rows,
     receivedAt: Date.now()
   }
 }
 
-export function fetchDocs(dbname){
+export function fetchDocs(db){
   return function(dispatch){
-    dispatch(requestDocs(dbname))
+    dispatch(requestDocs(db))
     return fetch(url + '/db/_all_docs',
                   {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ dbname: dbname.name })
+                    body: JSON.stringify({ dbname: db.name })
                   })
       .then(res => res.json())
-      .then(json => dispatch(receiveDocs(dbname, json)))
+      .then(json => dispatch(receiveDocs(db, json)))
   }
 }
