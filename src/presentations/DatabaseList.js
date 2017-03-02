@@ -56,8 +56,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
             <tbody>
               {Object.keys(docDetail).map(k => 
                 <tr key={k}>
-                  <td className='valueField'><Field name={k} component={renderTextField} label={k} /></td>
-                  {/*<td className='valueField'><TextField id={k} floatingLabelText={k} defaultValue={docDetail[k]} /></td>*/}
+                  <td className='valueField'><Field name={k} component={renderTextField} label={k} disabled={k === '_id' || k === '_rev'} /></td>
                 </tr>
               )}
               <tr>
