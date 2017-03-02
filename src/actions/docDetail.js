@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-fetch'
 import { config } from '../config.js'
+import { initialize } from 'redux-form'
 
 // action types
 export const REQUEST_DOC_DETAIL = 'REQUEST_DOC_DETAIL'
 export const RECEIVE_DOC_DETAIL = 'RECEIVE_DOC_DETAIL'
 export const FETCH_DOC_DETAIL = 'FETCH_DOC_DETAIL'
-
 export const SAVE_DOC_DETAIL = 'SAVE_DOC_DETAIL'
 
 // other constants
@@ -41,11 +41,14 @@ export function fetchDocDetail(db, doc){
                     },
                     body: JSON.stringify({
                       dbname: db.name,
-                      docId: doc.id
+                      docId: doc._id
                     })
                   })
       .then(res => res.json())
-      .then(json => dispatch(receiveDocDetail(db, doc, json)))
+      .then(json => {
+        dispatch(receiveDocDetail(db, doc, json))
+        dispatch(initialize('databaseListForm', json))
+      })
   }
 }
 
@@ -65,6 +68,9 @@ export function saveDocDetail(db, docDetail, values){
                     })
                   })
       .then(res => res.json())
-      .then(json => dispatch(receiveDocDetail(db, docDetail, json)))
+      .then(json => (json.ok) ?
+        dispatch(fetchDocDetail(db, docDetail)) :
+        dispatch(receiveDocDetail(db, docDetail, json))
+      )
   }
 }

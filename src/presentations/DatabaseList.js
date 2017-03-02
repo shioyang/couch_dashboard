@@ -37,7 +37,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
             <tr>
               <td>{d['id']}</td>
               <td><FlatButton onClick={
-                  () => onDocClick({name: 'host'}, {id: d['id']})
+                  () => onDocClick({name: 'host'}, {_id: d['id']})
                 }>Edit</FlatButton></td>
             </tr>
           </tbody>
