@@ -1,3 +1,3 @@
 export const config = {
-  couch_url: 'http://localhost'
+  server_url: 'http://localhost/couch'
 }

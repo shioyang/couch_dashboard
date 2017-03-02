@@ -7,7 +7,7 @@ export const RECEIVE_DOCS = 'RECEIVE_DOCS'
 export const FETCH_DOCS = 'FETCH_DOCS'
 
 // other constants
-const url = config.couch_url
+const url = config.server_url
 
 // action creators
 export function requestDocs(dbname){
@@ -29,8 +29,14 @@ export function receiveDocs(dbname, json){
 export function fetchDocs(dbname){
   return function(dispatch){
     dispatch(requestDocs(dbname))
-    return fetch(url + '/' + dbname.name + '/_all_docs',
-                   {mode: 'cors', credentials: 'include'})
+    return fetch(url + '/db/_all_docs',
+                  {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ dbname: dbname.name })
+                  })
       .then(res => res.json())
       .then(json => dispatch(receiveDocs(dbname, json)))
   }
