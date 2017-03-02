@@ -21,9 +21,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchDocDetail(db, doc))
     },
     onDocDetailSubmit: (db, docDetail, values) => {
-      console.log(db)
-      console.log(docDetail)
-      console.log(values)
       dispatch(saveDocDetail(db, docDetail, values))
     }
   }
