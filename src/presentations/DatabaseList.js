@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import Dialog from 'material-ui/Dialog'
 import { Field, reduxForm } from 'redux-form'
 import './DatabaseList.css'
 
@@ -18,7 +19,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
   />
 )
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit,
+const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit, onAddValueClick, dialog, onOkClick, onCancelClick,
                         handleSubmit, reset, pristine, submitting }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
@@ -36,7 +37,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
           <tbody>
             <tr>
               <td>{d['id']}</td>
-              <td><FlatButton onClick={
+              <td><FlatButton onTouchTap={
                   () => onDocClick({name: 'host'}, {_id: d['id']})
                 }>Edit</FlatButton></td>
             </tr>
@@ -60,7 +61,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
                 </tr>
               )}
               <tr>
-                <td><FloatingActionButton mini={true}><ContentAdd /></FloatingActionButton></td>
+                <td><FloatingActionButton mini={true} onTouchTap={() => onAddValueClick('AddValueDialog')}><ContentAdd /></FloatingActionButton></td>
               </tr>
             </tbody>
           </table>
@@ -68,6 +69,16 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
             <RaisedButton type='submit' primary={true} style={{margin: '0 5px'}} disabled={pristine || submitting}>Save</RaisedButton>
             <RaisedButton style={{margin: '0 5px'}} onClick={reset} disabled={pristine || submitting}>Reset</RaisedButton>
           </div>
+          <Dialog title='Add Value Dialog'
+                  actions={[
+                    <FlatButton label='Cancel' onTouchTap={() => onCancelClick()} />,
+                    <FlatButton label='Add' onTouchTap={() => onOkClick()} keyboardFocused={true} />
+                  ]}
+                  modal={false}
+                  open={dialog.open}
+                  onRequestClose={() => onCancelClick()} >
+            <TextField id='test1' name='test1' />
+          </Dialog>
         </form>
       }
     </div>
@@ -85,7 +96,10 @@ DatabaseList.propTypes = {
   })),
   onDocClick: PropTypes.func,
   docDetail: PropTypes.shape({ }),
-  onDocDetailSubmit: PropTypes.func
+  onDocDetailSubmit: PropTypes.func,
+  onAddValueClick: PropTypes.func,
+  onOkClick: PropTypes.func,
+  onCancelClick: PropTypes.func
 }
 
 export default reduxForm({
