@@ -19,7 +19,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
   />
 )
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail, onDocDetailSubmit, onAddValueClick, dialog, onOkClick, onCancelClick,
+const DatabaseList = ({ databases, onDatabaseClick, docs, selectedDb, onDocClick, docDetail, onDocDetailSubmit, onAddValueClick, dialog, onOkClick, onCancelClick,
                         handleSubmit, reset, pristine, submitting }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
@@ -35,7 +35,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
       {docs && docs.length !== 0 &&
         <div>
           {docs.map(d => 
-            <FlatButton key={d.id} label={d['id']} onTouchTap={() => onDocClick({name: 'host'}, {_id: d['id']}) } />
+            <FlatButton key={d.id} label={d['id']} onTouchTap={() => onDocClick({name: selectedDb.name}, {_id: d['id']}) } />
           )}
         </div>
       }
@@ -46,7 +46,7 @@ const DatabaseList = ({ databases, onDatabaseClick, docs, onDocClick, docDetail,
     <div className='docDetailArea'>
       {docs && docs.length !== 0 &&
        docDetail && Object.keys(docDetail).length !== 0 &&
-        <form onSubmit={handleSubmit((values) => onDocDetailSubmit({name: 'host'}, docDetail, values))}>
+        <form onSubmit={handleSubmit((values) => onDocDetailSubmit({name: selectedDb.name}, docDetail, values))}>
           <table>
             <tbody>
               {Object.keys(docDetail).map(k => 
@@ -88,6 +88,7 @@ DatabaseList.propTypes = {
     id: PropTypes.string.isRequired,
     key: PropTypes.string.isRequired
   })),
+  selectedDb: PropTypes.shape({ }),
   onDocClick: PropTypes.func,
   docDetail: PropTypes.shape({ }),
   onDocDetailSubmit: PropTypes.func,

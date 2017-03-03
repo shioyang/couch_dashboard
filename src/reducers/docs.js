@@ -2,14 +2,16 @@ import { REQUEST_DOCS, RECEIVE_DOCS } from '../actions/docs'
 
 const initial_docs = {
   isFetching: false,
-  items: []
+  items: [],
+  selectedDb: null
 }
 
 const Docs = function docs(state = initial_docs, action){
   switch(action.type){
     case REQUEST_DOCS:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        selectedDb: action.db
       })
     case RECEIVE_DOCS:
       return Object.assign({}, state, {

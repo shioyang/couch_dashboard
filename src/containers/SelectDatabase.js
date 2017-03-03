@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
   return {
     databases: state.databases,
     docs: state.docs.items,
+    selectedDb: state.docs.selectedDb,
     docDetail: state.docDetail.item,
     initialValues: state.docDetail.item, // initialize form fields
     dialog: state.dialog
@@ -16,8 +17,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDatabaseClick: (name) => {
-      dispatch(fetchDocs(name))
+    onDatabaseClick: (db) => {
+      dispatch(fetchDocs(db))
     },
     onDocClick: (db, doc) => {
       dispatch(fetchDocDetail(db, doc))
