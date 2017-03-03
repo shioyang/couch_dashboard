@@ -7,8 +7,10 @@ import DatabaseList from '../presentations/DatabaseList'
 const mapStateToProps = (state) => {
   return {
     databases: state.databases,
+    docsFetching: state.docs.isFetching,
     docs: state.docs.items,
     selectedDb: state.docs.selectedDb,
+    docDetailFetching: state.docDetail.isFetching,
     docDetail: state.docDetail.item,
     initialValues: state.docDetail.item, // initialize form fields
     dialog: state.dialog

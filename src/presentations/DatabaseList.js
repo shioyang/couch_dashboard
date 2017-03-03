@@ -19,7 +19,10 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
   />
 )
 
-const DatabaseList = ({ databases, onDatabaseClick, docs, selectedDb, onDocClick, docDetail, onDocDetailSubmit, onAddValueClick, dialog, onOkClick, onCancelClick,
+const DatabaseList = ({ databases, onDatabaseClick,
+                        docsFetching, docs, selectedDb, onDocClick,
+                        docDetailFetching, docDetail, onDocDetailSubmit,
+                        onAddValueClick, dialog, onOkClick, onCancelClick,
                         handleSubmit, reset, pristine, submitting }) => (
   <div className='databaseList'>
     <div className='dbNameListArea'>
@@ -84,12 +87,14 @@ DatabaseList.propTypes = {
     name: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onDatabaseClick: PropTypes.func.isRequired,
+  docsFetching: PropTypes.bool,
   docs: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     key: PropTypes.string.isRequired
   })),
   selectedDb: PropTypes.shape({ }),
   onDocClick: PropTypes.func,
+  docDetailFetching: PropTypes.bool,
   docDetail: PropTypes.shape({ }),
   onDocDetailSubmit: PropTypes.func,
   onAddValueClick: PropTypes.func,
