@@ -72,8 +72,7 @@ const DatabaseList = ({ databases, onDatabaseClick,
                     <FlatButton label='Add' onTouchTap={() => onOkClick()} keyboardFocused={true} />
                   ]}
                   modal={false}
-                  open={dialog.open}
-                  onRequestClose={() => onCancelClick()} >
+                  open={dialog.open} >
             <TextField id='test1' name='test1' />
           </Dialog>
         </form>
