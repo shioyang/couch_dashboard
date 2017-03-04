@@ -9,8 +9,7 @@ const mapStateToProps = (state) => {
     docsFetching: state.docs.isFetching,
     docs: state.docs.items,
     selectedDb: state.docs.selectedDb,
-    docDetailFetching: state.docDetail.isFetching,
-    initialValues: state.docDetail.item // initialize form fields
+    docDetailFetching: state.docDetail.isFetching
   }
 }
 

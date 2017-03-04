@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import Database from './Database'
 import FlatButton from 'material-ui/FlatButton'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'

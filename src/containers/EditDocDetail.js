@@ -10,16 +10,12 @@ const mapStateToProps = (state) => {
     selectedDb: state.docs.selectedDb,
     docDetailFetching: state.docDetail.isFetching,
     docDetail: state.docDetail.item,
-    initialValues: state.docDetail.item, // initialize form fields
     dialog: state.dialog
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onDocClick: (db, doc) => {
-    //   dispatch(fetchDocDetail(db, doc))
-    // },
     onDocDetailSubmit: (db, docDetail, values) => {
       dispatch(saveDocDetail(db, docDetail, values))
     },
