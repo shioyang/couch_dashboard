@@ -1,0 +1,13 @@
+.docDetailArea table {
+  margin-left: auto;
+  margin-right: auto;
+  /*border: 4px solid gray;*/
+  padding: 20px 50px;
+  background-color: white;
+}
+.docDetailArea table label {
+  margin: 0 15px 0 0;
+} 
+.docDetailArea .actionButtons {
+  padding: 10px 0 0;
+}
