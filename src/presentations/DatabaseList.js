@@ -26,7 +26,7 @@ const DatabaseList = ({ databases, onDatabaseClick,
       {docs && docs.length !== 0 &&
         <div>
           {docs.map(d => 
-            <FlatButton key={d.id} label={d['id']} onTouchTap={() => onDocClick({name: selectedDb.name}, {_id: d['id']}) } />
+            <FlatButton key={d.id} label={d['id']} labelStyle={{'text-transform':'none'}} onTouchTap={() => onDocClick({name: selectedDb.name}, {_id: d['id']}) } />
           )}
         </div>
       }
