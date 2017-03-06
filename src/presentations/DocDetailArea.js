@@ -20,7 +20,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 
 const DocDetailArea = ({docs, selectedDb,
                         docDetailFetching, docDetail, onDocDetailSubmit,
-                        onAddValueClick, dialog, onOkClick, onCancelClick,
+                        onAddValueClick, dialog, onOkClick, onCancelClick, onChangeNewKey,
                         handleSubmit, reset, pristine, submitting }) => (
   <div className='docDetailArea'>
     {docs && docs.length !== 0 &&
@@ -49,7 +49,7 @@ const DocDetailArea = ({docs, selectedDb,
                 ]}
                 modal={false}
                 open={dialog.open} >
-          <TextField id='test1' name='test1' />
+          <TextField id='keyName' name='keyName' onChange={(event, newValue) => onChangeNewKey(newValue)} />
         </Dialog>
       </form>
     }
@@ -67,7 +67,8 @@ DocDetailArea.propTypes = {
   onDocDetailSubmit: PropTypes.func,
   onAddValueClick: PropTypes.func,
   onOkClick: PropTypes.func,
-  onCancelClick: PropTypes.func
+  onCancelClick: PropTypes.func,
+  onChangeNewKey: PropTypes.func
 }
 
 export default reduxForm({
