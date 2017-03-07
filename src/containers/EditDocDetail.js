@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { fetchDocs } from '../actions/docs'
-import { fetchDocDetail, saveDocDetail } from '../actions/docDetail'
-import { openDialog, closeDialog, changeKeyName } from '../actions/dialog'
+import { fetchDocDetail, saveDocDetail, changeKeyName, addKeyToDoc } from '../actions/docDetail'
+import { openDialog, closeDialog } from '../actions/dialog'
 import DocDetailArea from '../presentations/DocDetailArea'
 
 const mapStateToProps = (state) => {
@@ -24,9 +24,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     onOkClick: () => {
       dispatch(closeDialog({ name: 'AddValueDialog' }))
+      dispatch(addKeyToDoc())
     },
     onCancelClick: () => {
       dispatch(closeDialog({ name: 'AddValueDialog' }))
+      dispatch(changeKeyName(null))
     },
     onChangeNewKey: (keyName) => {
       dispatch(changeKeyName(keyName))

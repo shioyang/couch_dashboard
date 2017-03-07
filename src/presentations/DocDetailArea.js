@@ -33,9 +33,9 @@ const DocDetailArea = ({docs, selectedDb,
                 <td className='valueField'><Field name={k} component={renderTextField} label={k} disabled={k === '_id' || k === '_rev'} /></td>
               </tr>
             )}
-            {/*<tr>
+            <tr>
               <td><FloatingActionButton mini={true} onTouchTap={() => onAddValueClick('AddValueDialog')}><ContentAdd /></FloatingActionButton></td>
-            </tr>*/}
+            </tr>
           </tbody>
         </table>
         <div className='actionButtons'>

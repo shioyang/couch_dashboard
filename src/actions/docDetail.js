@@ -7,6 +7,8 @@ export const REQUEST_DOC_DETAIL = 'REQUEST_DOC_DETAIL'
 export const RECEIVE_DOC_DETAIL = 'RECEIVE_DOC_DETAIL'
 export const FETCH_DOC_DETAIL = 'FETCH_DOC_DETAIL'
 export const SAVE_DOC_DETAIL = 'SAVE_DOC_DETAIL'
+export const CHANGE_KEY_NAME = 'CHANGE_KEY_NAME'
+export const ADD_KEY_TO_DOC = 'ADD_KEY_TO_DOC'
 
 // other constants
 const url = config.server_url
@@ -72,5 +74,18 @@ export function saveDocDetail(db, docDetail, values){
         dispatch(fetchDocDetail(db, docDetail)) :
         dispatch(receiveDocDetail(db, docDetail, json))
       )
+  }
+}
+
+export function changeKeyName(keyName){
+  return {
+    type: CHANGE_KEY_NAME,
+    keyName: keyName
+  }
+}
+
+export function addKeyToDoc(){
+  return {
+    type: ADD_KEY_TO_DOC
   }
 }
