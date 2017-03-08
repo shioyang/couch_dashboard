@@ -30,7 +30,9 @@ const DocDetailArea = ({docs, selectedDb,
           <tbody>
             {Object.keys(docDetail).map(k => 
               <tr key={k}>
-                <td className='valueField'><Field name={k} component={renderTextField} label={k} disabled={k === '_id' || k === '_rev'} /></td>
+                <td className='valueField'>
+                  <Field name={k} component={renderTextField} label={k} disabled={k === '_id' || k === '_rev'} />
+                </td>
               </tr>
             )}
             <tr>
