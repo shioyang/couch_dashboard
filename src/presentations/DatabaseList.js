@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Field, reduxForm } from 'redux-form'
+import SelectDoc from '../containers/SelectDoc'
 import EditDocDetail from '../containers/EditDocDetail'
 import './DatabaseList.css'
 
@@ -22,18 +23,7 @@ const DatabaseList = ({ databases, onDatabaseClick,
         />
       )}
     </div>
-    <div className='docInfoListArea'>
-      {docs && docs.length !== 0 &&
-        <div>
-          {docs.map(d => 
-            <FlatButton key={d.id} label={d['id']} labelStyle={{'text-transform':'none'}} onTouchTap={() => onDocClick({name: selectedDb.name}, {_id: d['id']}) } />
-          )}
-        </div>
-      }
-      {docs && docs.length === 0 &&
-        <span className='noResults'>No Results</span>
-      }
-    </div>
+    <SelectDoc />
     <EditDocDetail />
   </div>
 )

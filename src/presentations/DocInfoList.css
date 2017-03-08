@@ -1,0 +1,13 @@
+.docInfoListArea {
+  padding: 5px;
+  margin: 10px 0;
+}
+.docInfoListArea {
+  /*border: 2px solid gray;*/
+  padding: 10px 20px;
+  /*background-color: white;*/
+}
+.docInfoListArea .noResults {
+  font-style: italic;
+  color: lightgray;
+}
